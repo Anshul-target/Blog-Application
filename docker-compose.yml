@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  user-db:
+    image: mysql:8.0
+    container_name: user-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Anshul@2002
+      MYSQL_DATABASE: user_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Anshul@2002
+    ports:
+      - "3307:3306"
+    volumes:
+      - user_db_data:/var/lib/mysql
+
+  blog-db:
+    image: mysql:8.0
+    container_name: blog-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Anshul@2002
+      MYSQL_DATABASE: blog_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Anshul@2002
+    ports:
+      - "3308:3306"
+    volumes:
+      - blog_db_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: blog-application
+    restart: always
+    depends_on:
+      - user-db
+      - blog-db
+    environment:
+      SPRING_USER_DATASOURCE_URL: jdbc:mysql://mysql:3306/user_db?createDatabaseIfNotExist=true&characterEncoding=UTF-8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_USER_DATASOURCE_USERNAME: root
+      SPRING_USER_DATASOURCE_PASSWORD: Anshul@2002
+      SPRING_BLOG_DATASOURCE_URL: jdbc:mysql://mysql:3306/blog_db?createDatabaseIfNotExist=true&characterEncoding=UTF-8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_BLOG_DATASOURCE_USERNAME: root
+      SPRING_BLOG_DATASOURCE_PASSWORD: Anshul@2002
+    ports:
+      - "8080:8080"
+
+volumes:
+  user_db_data:
+  blog_db_data:
