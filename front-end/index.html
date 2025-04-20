@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovative Blog Platform</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">BlogHub</a>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="/create">Create Post</a>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search posts...">
+                    <button id="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Blog Posts Container -->
+        <div class="posts-container" id="postsContainer">
+            <!-- Posts will be dynamically inserted here -->
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Create Post Modal -->
+        <div class="modal" id="createPostModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Create New Post</h2>
+                <form id="createPostForm">
+                    <div class="form-group">
+                        <label for="postTitle">Title</label>
+                        <input type="text" id="postTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Content</label>
+                        <textarea id="postContent" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Create Post</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 BlogHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
